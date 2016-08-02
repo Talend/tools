@@ -18,7 +18,7 @@ To setup the automatic formatter validation for every maven build please add the
 <build>
 	<plugins>
 		<plugin>
-			<groupId>net.revelc.code</groupId>
+			<groupId>net.revelc.code.formatter</groupId>
 			<artifactId>formatter-maven-plugin</artifactId>
 			<version>1.6.0-SNAPSHOT</version>
 			<executions>
@@ -29,6 +29,7 @@ To setup the automatic formatter validation for every maven build please add the
 	          </execution>
 	        </executions>
             <configuration>
+            	<encoding>UTF-8</encoding>
                 <configFile>talend_java_eclipse_formatter.xml</configFile>
             </configuration>
 			<dependencies>
