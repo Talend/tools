@@ -94,7 +94,6 @@ The footer should contain
 
 #### Examples
 
-
 ```
 doc(TFD-38/webapp): analyse more flowchart libraries
 
@@ -106,15 +105,21 @@ doc(TFD-38/webapp): analyse more flowchart libraries
 #comments JointJS seems great
 ```
 
+---
+
 ```
 feat(TFD-66/cli): implement Swagger from FlowRunnerController
 
 #time 3h
 ```
 
+---
+
 ```
 fix(TFD-60): review the DAO architecture to inject the ReactiveMongoAPI
 ```
+
+---
 
 ```
 chore(TFD-60/poc/runtimedsl): adding constraint on tSortRow
