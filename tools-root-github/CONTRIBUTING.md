@@ -20,10 +20,10 @@ Here is the workflow for pull requests we are using.
    => the CI should kick tests so you will have feedback about the different QA
 2. If any issues are marked on the PR by CI please fix them. No broken PR will be reviewed.
 3. Once the quality checks are OK, and you need your PR to be reviewed you must use the label **Need review**. If your PR is still a work in progress, do not use any label but this means no review will be performed.
-4. The components owners will then identify who is going to do the review and then assign it. The reviewer will recieve an automatic mail notification.
+4. The components owners will then identify who is going to do the review and then assign it. The reviewer will receive an automatic mail notification.
 5. Once the reviewer starts the review, he/she should set the label **Reviewing**.
 6. We use the new review system of github so you will know if the reviewer request changes, approve it or just add some comments.
-7. if any changes are requested please fix them and then once you are ready request a new review by ping the reviewer throw github
+7. if any changes are requested please fix them and then once you are ready request a new review by ping the reviewer through github
 
 Here are the label definitions for this workflow (label name : color code) :
 * Need review                : #fef2c0
