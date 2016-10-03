@@ -5,7 +5,7 @@ options:
 
 # File Options
 files:
-  include: 'src/app/**/*.s+(a|c)ss'
+  include: 'src/**/*.s+(a|c)ss'
   ignore:
     - 'src/app/css/vendors/libs/**/*.*'
 
