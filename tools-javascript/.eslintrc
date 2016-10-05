@@ -2,7 +2,7 @@
   "extends": "airbnb",
   "parser": "babel-eslint",
   "rules": {
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": ['*.test.js', '.spec.js']}],
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["*.test.js", ".spec.js"]}],
     "no-tabs": "off",
     "indent": ["error", "tab"],
     "react/prefer-es6-class": 0,
