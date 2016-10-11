@@ -46,7 +46,7 @@ format that includes a **type**, a **scope** and a **subject**:
 <footer>
 ```
 
-The **header** is mandatory and the **scope** of the header is optional.
+The **header** is mandatory.
 
 Any line of the commit message cannot be longer 100 characters! This allows the message to be easier
 to read on GitHub as well as in various git tools.
@@ -69,9 +69,9 @@ Must be one of the following:
 * **chore**: Changes to the build process or auxiliary tools and libraries such as documentation generation
 
 #### Scope
-The scope could be anything specifying place of the commit change. Most of the time it shoulb be Jira ticket reference followed by a usefull context.
+Must contain the Jira ticket reference and can be extended by anything specifying the location of the commit change. It must be surrounded by parenthesis followed by a colon and a space.
 
-For example `TFD-66/webapp`, `TFD-67/cli`, `svc-datastore`, etc...
+For example `(TFD-66/webapp): `, `(TFD-67/cli): `, `(TCOMP-123): `, etc...
 
 #### Subject
 The subject contains succinct description of the change:
