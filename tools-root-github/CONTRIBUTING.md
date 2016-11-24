@@ -14,16 +14,16 @@ QA: Quality Assurance
 PR: Pull Request
 CI: Continuous Integration (Jenkins or Travis)
 
-Here is the workflow for pull requests we are using.
+Here is the workflow we are using for pull requests.
 
-1. Submit your pull request.
+1. Submit your pull request. (PR name must match [commit name](#commit))
    => the CI should kick tests so you will have feedback about the different QA
 2. If any issues are marked on the PR by CI please fix them. No broken PR will be reviewed.
 3. Once the quality checks are OK, and you need your PR to be reviewed you must use the label **Need review**. If your PR is still a work in progress, do not use any label but this means no review will be performed.
 4. The components owners will then identify who is going to do the review and then assign it. The reviewer will receive an automatic mail notification.
 5. Once the reviewer starts the review, he/she should set the label **Reviewing**.
-6. We use the new review system of github so you will know if the reviewer request changes, approve it or just add some comments.
-7. if any changes are requested please fix them and then once you are ready request a new review by ping the reviewer through github
+6. We use the new review system of GitHub so you will know if the reviewer request changes, approve it or just add some comments.
+7. If any changes are requested please fix them and then once you are ready request a new review by ping the reviewer through GitHub
 
 Here are the label definitions for this workflow (label name : color code) :
 * Need review                : #fef2c0
@@ -69,7 +69,7 @@ Must be one of the following:
 * **chore**: Changes to the build process or auxiliary tools and libraries such as documentation generation
 
 #### Scope
-The scope could be anything specifying place of the commit change. Most of the time it shoulb be Jira ticket reference followed by a usefull context.
+The scope could be anything specifying place of the commit change. Most of the time it should be JIRA ticket reference followed by a useful context.
 
 For example `TFD-66/webapp`, `TFD-67/cli`, `svc-datastore`, etc...
 
@@ -82,7 +82,7 @@ The subject contains succinct description of the change:
 
 #### Body
 Just as in the **subject**, use the imperative, present tense: "change" not "changed" nor "changes".
-The body should include the motivation for the change and contrast this with previous behavior.
+The body should include the motivation for the change and contrast this with previous behaviour.
 
 #### Footer
 The footer should contain
