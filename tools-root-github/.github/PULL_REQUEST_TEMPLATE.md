@@ -1,5 +1,4 @@
-**Please check if the PR fulfills these requirements:** (Remove section once
-checked)
+**Please check if the PR fulfills these requirements:**
 
 - [ ] The commit(s) message(s) follows our [guidelines](https://github.com/talend/tools/blob/master/tools-root-github/CONTRIBUTING.md#commit-message-format) ?
 - [ ] Tests for the changes have been added (for bug fixes / features) ?
