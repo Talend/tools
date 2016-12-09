@@ -1,8 +1,11 @@
 ### IntelliJ idea
- * Install [Eclipse Code Formatter](https://plugins.jetbrains.com/plugin/6546) plugin
- * Import the java formatter file [src/main/resources/talend_java_eclipse_formatter.xml](src/main/resources/talend_java_eclipse_formatter.xml)
- * Set the order import manually as followed `java;javax;org;com;`
- * Disable import on the fly (Preferences -> Editor -> General -> Auto Import, uncheck Optimize imports on the fly)
+* Install [Eclipse Code Formatter](https://plugins.jetbrains.com/plugin/6546) plugin
+* Import the java formatter file [src/main/resources/talend_java_eclipse_formatter.xml](src/main/resources/talend_java_eclipse_formatter.xml)
+* Set the order import manually as followed `java;javax;org;com;`
+* Disable import on the fly (Settings... -> Editor -> General -> Auto Import, uncheck Optimize imports on the fly)
+* Disable `.*` imports (Settings... -> Editor -> Code Style -> Java -> Imports)
+  - `Class count to use import with '*'` : 999
+  - `Names count to use import static with '*'` : 999
 
 That's it, you're good to go !
 
@@ -38,7 +41,7 @@ To setup the automatic formatter validation for every maven build please add the
 	            <artifactId>java-formatter</artifactId>
 	            <version>0.1.0</version>
 	          </dependency>
-	        </dependencies>                
+	        </dependencies>
 		</plugin>
 	</plugins>
 </build>
