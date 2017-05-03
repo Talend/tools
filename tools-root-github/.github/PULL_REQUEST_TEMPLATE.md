@@ -1,23 +1,17 @@
+**What is the problem this PR is trying to solve?**
+ 
+**What is the chosen solution to this problem?**
+ 
+**Link to the JIRA issue**
+e.g. https://jira.talendforge.org/browse/TPSVC-XXX
+ 
 **Please check if the PR fulfills these requirements**
-
-- [ ] The commit(s) message(s) follows our [guidelines](https://github.com/talend/tools/blob/master/tools-root-github/CONTRIBUTING.md#commit-message-format) ?
-- [ ] Tests for the changes have been added (for bug fixes / features) ?
-- [ ] Docs have been added / updated (for bug fixes / features) ?
-- [ ] The code coverage on new code >75%
-- [ ] The new code does not introduce new technical issues (sonar / eslint)
-
-**What is the current behavior?** (You can also link to an open issue here)
-
-
-
-**What is the new behavior?**
-
-
-
-**BREAKING CHANGE**
-
-If this PR contains a breaking change, please describe the impact and migration
-path for existing applications.
-If not please remove this section.
-
-**Other information**:
+- [ ] The PR commit message follows our [guidelines](https://github.com/talend/tools/blob/master/tools-root-github/CONTRIBUTING.md)
+- [ ] Tests for the changes have been added (for bug fixes / features)
+- [ ] Docs have been added / updated (for bug fixes / features)
+- [ ] Related design / discussions / pages (not in jira), if any, are all linked or available in the PR
+ 
+**[ ] This PR introduces a breaking change**
+ 
+**Original Template**
+https://github.com/Talend/tools/blob/master/tools-root-github/.github/PULL_REQUEST_TEMPLATE.md 
