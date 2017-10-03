@@ -16,8 +16,6 @@ All those formatting rules are shared across Talend's frontend teams.
 
 * For repository which has Prettier configuration, you should execute it on file saving. Follow those [configuration steps](https://github.com/prettier/prettier/blob/master/editors/webstorm/README.md).
 
-On repos
-
 ### VSCode
 
 * Install Microsoft's [vscode-eslint](https://github.com/Microsoft/vscode-eslint) plugin
