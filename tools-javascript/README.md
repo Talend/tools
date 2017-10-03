@@ -14,7 +14,7 @@ All those formatting rules are shared across Talend's frontend teams.
 * In settings > Code Style, select 'Talend' profile
 * Install [eslint plugin](https://plugins.jetbrains.com/plugin/7494-eslint) and configure it (File > settings).
 
-* On repos that has prettier configuration, you should execute it on file saving. Follow those [configuration steps](https://github.com/prettier/prettier/blob/master/editors/webstorm/README.md).
+* For repository which has Prettier configuration, you should execute it on file saving. Follow those [configuration steps](https://github.com/prettier/prettier/blob/master/editors/webstorm/README.md).
 
 On repos
 
