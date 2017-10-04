@@ -23,7 +23,7 @@ To setup the automatic formatter validation for every maven build please add the
 		<plugin>
 			<groupId>net.revelc.code.formatter</groupId>
 			<artifactId>formatter-maven-plugin</artifactId>
-			<version>1.6.0-SNAPSHOT</version>
+			<version>2.0.1</version>
 			<executions>
 	          <execution>
 	            <goals>
