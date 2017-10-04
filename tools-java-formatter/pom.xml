@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.talend.tools</groupId>
 	<artifactId>java-formatter</artifactId>
-	<version>0.1.0</version>
+	<version>0.2.0</version>
 	<packaging>jar</packaging>
 	<name>Java Formatter resource using eclipse format</name>
 	<url>https://github.com/Talend/tools</url>
