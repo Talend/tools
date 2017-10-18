@@ -6,7 +6,7 @@
 * Disable `.*` imports (Settings... -> Editor -> Code Style -> Java -> Imports)
   - `Class count to use import with '*'` : 999
   - `Names count to use import static with '*'` : 999
-* setup .properties files encoding to ISO-8859-1 (Preferences -> Editor -> File encoding -> default encoding for properties files)
+* Setup .properties files encoding to ISO-8859-1 (Preferences -> Editor -> File encoding -> default encoding for properties files) (see https://docs.oracle.com/javase/8/docs/api/java/util/PropertyResourceBundle.html for more details)
 
 That's it, you're good to go !
 
@@ -14,7 +14,7 @@ That's it, you're good to go !
 * Open Eclipse preferences
 * Select the Java->Code Style->Formatter section.
 * click on the *Import* button and select the file  (src/main/resources/talend_java_eclipse_formatter.xml)
-* setup .properties files encoding to ISO-8859-1 (Preferences -> General -> Content Type -> Java properties file -> default encoding)
+* Setup .properties files encoding to ISO-8859-1 (Preferences -> General -> Content Type -> Java properties file -> default encoding) (see https://docs.oracle.com/javase/8/docs/api/java/util/PropertyResourceBundle.html for more details)
 
 ### Maven
 #### setup formatter validation
