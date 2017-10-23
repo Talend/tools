@@ -128,6 +128,8 @@ so that the branch can easily be traced back to you.
 
 The first part of the branch name after ```username/``` should be the jira-id, followed by a hyphen and a short description. Use underscores to separate words in the short description.
 
+The `@` character is forbidden, since this is not compatible with our CI tools.
+
 ## <a name="squash"></a> Squash
 
 Within a pull request, a relatively small number of commits that break the problem into logical steps 
