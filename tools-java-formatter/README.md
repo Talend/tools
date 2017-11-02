@@ -29,23 +29,24 @@ To setup the automatic formatter validation for every maven build please add the
 			<artifactId>formatter-maven-plugin</artifactId>
 			<version>2.0.1</version>
 			<executions>
-	          <execution>
-	            <goals>
-	              <goal>validate</goal>
-	            </goals>
-	          </execution>
-	        </executions>
-            <configuration>
-            	<encoding>UTF-8</encoding>
-                <configFile>talend_java_eclipse_formatter.xml</configFile>
-            </configuration>
+				<execution>
+					<goals>
+						<goal>validate</goal>
+					</goals>
+				</execution>
+			</executions>
+			<configuration>
+				<encoding>UTF-8</encoding>
+				<configFile>talend_java_eclipse_formatter.xml</configFile>
+				<lineEnding>LF</lineEnding>
+			</configuration>
 			<dependencies>
-	          <dependency>
-	            <groupId>org.talend.tools</groupId>
-	            <artifactId>java-formatter</artifactId>
-	            <version>0.1.0</version>
-	          </dependency>
-	        </dependencies>
+				<dependency>
+					<groupId>org.talend.tools</groupId>
+					<artifactId>java-formatter</artifactId>
+					<version>0.1.0</version>
+				</dependency>
+			</dependencies>
 		</plugin>
 	</plugins>
 </build>
