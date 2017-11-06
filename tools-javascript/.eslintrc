@@ -2,9 +2,11 @@
   "extends": "airbnb",
   "parser": "babel-eslint",
   "rules": {
+    "arrow-parens": [2, "as-needed"],
     "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.test.js", "**/*.spec.js"]}],
-    "no-tabs": "off",
     "indent": ["error", "tab", { "SwitchCase": 1 }],
+    "no-mixed-operators": "off",
+    "no-tabs": "off",
     "react/prefer-es6-class": 0,
     "react/jsx-indent": ["error", "tab"],
     "react/jsx-indent-props": ["error", "tab"],
