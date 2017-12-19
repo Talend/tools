@@ -1,0 +1,48 @@
+{{- $envValues := pluck .Values.global.env .Values | first | default .Values }}
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: {{ template "<service_name>.fullname" . }}
+  labels:
+{{ include "<service_name>.labels" . | indent 4 }}
+spec:
+  replicas: {{ int .Values.global.replicaCount | default $envValues.replicaCount }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "<service_name>.name" . }}
+        release: {{ .Release.Name }}
+    spec:
+      imagePullSecrets:
+        - name: {{ template "<service_name>.registryKey" . }}
+      containers:
+        - name: {{ .Chart.Name }}
+          image: {{ template "<service_name>.image" . }}
+          imagePullPolicy: {{ $envValues.image.pullPolicy }}
+          ports:
+            - name: {{ template "<service_name>.serviceName" . }}
+              containerPort: {{ $envValues.service.defaultPort }}
+          envFrom:
+            - configMapRef:
+                name: {{ template "<service_name>.fullname" . }}
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: {{ $envValues.service.defaultPort }}
+            initialDelaySeconds: 5
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: {{ $envValues.service.defaultPort }}
+            initialDelaySeconds: 5
+            timeoutSeconds: 5
+          {{- if $envValues.resources }}
+          resources:
+{{ toYaml $envValues.resources | indent 12 }}
+          {{- end }}
+      {{- if $envValues.nodeAffinity }}
+      affinity:
+        nodeAffinity:
+{{ toYaml $envValues.nodeAffinity | indent 10 }}
+      {{- end }}

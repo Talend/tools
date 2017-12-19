@@ -1,0 +1,71 @@
+## Default values for tpsvc-config.
+## This is a YAML-formatted file.
+## Declare variables to be passed into your templates.
+
+## ------------------------------------------------------------------------------------------------------ ##
+## defines global values
+
+global:
+  ## env defines the deployment environment: prod, qa, dev
+  env: prod
+  ## registry defines the docker registry
+  registry: "registry.datapwn.com"
+  ## repositoryUser defines the GitHub user name. Default value is "talend".
+  repositoryUser: "talend"
+  ## registryKey is a k8s secret for Docker images. Default value is "talendregistry"
+  ## the secret needs to be created manually
+  ## kubectl create secret docker-registry talend-docker-registry --docker-server=registry.datapwn.com --docker-username=<you user name> --docker-password="<your password>" --docker-email=<your email>
+  registryKey: talendregistry
+  
+  ## infraReleaseName is the Helm release name for Infrastructure charts (i.e. MongoDB, PostgreSQL, etc...)
+  ## only set this value if the Infrastructure chart is not in the same release with the current chart
+  # infraReleaseName: infra
+  
+  ## platformReleaseName is the Helm release name for Platform charts (i.e. Config Service, Provisioning Service, etc...)
+  ## only set this value if the Platform chart is not in the same release with the current chart
+  # platformReleaseName: infra
+
+## ------------------------------------------------------------------------------------------------------ ##
+## defines custom values
+
+## replicaCount defines the number of container replicas running in parallel
+replicaCount: 1
+
+image:
+  ## repositoryName represents the GitHub repository name
+  repositoryName: "<service_name>"
+  ## tag defines the version/tag of the docker image
+  tag: "@service.version@"
+  ## pullPolicy defines the pull policy for docker images: IfNotPresent and Always
+  ## default value is IfNotPresent
+  pullPolicy: "IfNotPresent"
+
+service:
+  ## name is the name of the service. By default it is set to the same value as the image.repositoryName
+  # name: "<service_name>"
+  ## type is the Kubernetes service type: ClusterIP, NodePort, LoadBalancer, ExternalName
+  ## default value is ClusterIP
+  type: "ClusterIP"
+  ## defaultPort is used for both services and pods/containers 
+  ## it can be the same for all services because each service receives its own ip address in a cluster
+  ## all docker images should also always use the same port which will be mapped to the defaultPort
+  ## A k8s service req
+  ## put more documentation in here about why we have only one port 
+  defaultPort: 7780
+
+## ------------------------------------------------------------------------------------------------------ ##
+## defines values for the production environment
+
+prod:
+
+
+## ------------------------------------------------------------------------------------------------------ ##
+## defines values for the production environment
+
+dev:
+
+image:
+  ## pullPolicy defines the pull policy for docker images: IfNotPresent and Always
+  pullPolicy: "Always"
+
+## ------------------------------------------------------------------------------------------------------ ##

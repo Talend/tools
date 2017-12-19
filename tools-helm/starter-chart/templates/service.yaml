@@ -1,0 +1,16 @@
+{{- $envValues := pluck .Values.global.env .Values | first | default .Values }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "<service_name>.fullname" . }}
+  labels:
+{{ include "<service_name>.labels" . | indent 4 }}
+spec:
+  type: {{ $envValues.service.type }}
+  ports:
+    - name: {{ template "<service_name>.serviceName" . }}
+      port: {{ $envValues.service.defaultPort }}
+      targetPort: {{ template "<service_name>.serviceName" . }}
+  selector:
+    app: {{ template "<service_name>.name" . }}
+    release: {{ .Release.Name }}

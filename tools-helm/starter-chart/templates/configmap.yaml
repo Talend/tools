@@ -1,0 +1,7 @@
+{{- $envValues := pluck .Values.global.env .Values | first | default .Values }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "<service_name>.fullname" . }}
+data:
+  ENV_VAR_NAME: {{ $envValues.<label_name> | quote }}
