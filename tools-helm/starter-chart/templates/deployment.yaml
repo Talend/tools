@@ -6,7 +6,7 @@ metadata:
   labels:
 {{ include "<service_name>.labels" . | indent 4 }}
 spec:
-  replicas: {{ int .Values.global.replicaCount | default $envValues.replicaCount }}
+  replicas: {{ int $envValues.replicaCount }}
   template:
     metadata:
       labels:

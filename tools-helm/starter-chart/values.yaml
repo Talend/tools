@@ -64,8 +64,8 @@ prod:
 
 dev:
 
-image:
-  ## pullPolicy defines the pull policy for docker images: IfNotPresent and Always
-  pullPolicy: "Always"
+  image:
+    ## pullPolicy defines the pull policy for docker images: IfNotPresent and Always
+    pullPolicy: "Always"
 
 ## ------------------------------------------------------------------------------------------------------ ##

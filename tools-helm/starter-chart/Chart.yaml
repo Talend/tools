@@ -1,7 +1,7 @@
 apiVersion: v1
 name: <service_name>
 description: A Helm chart for the <service_name> in Kubernetes
-version: <version_number>
+version: @service.version@
 keywords:
   - Talend
   - <more keywords>
@@ -11,4 +11,4 @@ sources:
 maintaniers:
   - name: Talend
     email: support@talend.com
-appVersion: <service_version>
+appVersion: @service.version@

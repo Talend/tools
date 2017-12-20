@@ -9,9 +9,13 @@
      - for production it could be something like: prod, dev, qa (need input from DevOps)
    - Namespaces (equal to the Release Name)
 1. What are the use cases for application persistence? Are there any?
+1. All docker images must expose the same port - this needs to be specified in the Docker policy
 
 
 ## In-Progress Tasks
+
+
+## Done Tasks
 
 1. How do we work with databases in/from a k8s cluster?
    - Use a k8s service to connect to the database - independent from where the database is deployed (inside or outside the k8s cluster)
@@ -38,8 +42,6 @@
        --storage-amazon-region="us-east-1"
 1. Do we use the default release names or should we define our own?
    - It is recommended to define our own release names - Do NOT use Helm default release names
-
-## Done Tasks
 
 1. Snapshot versions in charts - do we need to do something here?
    - In general we don't use the version qualifier at all

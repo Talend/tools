@@ -43,15 +43,19 @@ heritage: {{ .Release.Service }}
 {{/*
 Define the docker image.
 */}}
-{{- define "<service_name>.image" -}}
-{{- $envValues := pluck .Values.global.env .Values | first | default .Values. }}
-{{- printf "%s/%s/%s:%s" .Values.global.registry .Values.global.repositoryUser $envValues.image.repositoryName $envValues.image.tag }}
+{{- define "tpsvc-config.image" -}}
+{{- $envValues := pluck .Values.global.env .Values | first }}
+{{- $imageRepositoryName := pick $envValues "image.repositoryName" | default .Values.image.repositoryName -}}
+{{- $imageTag := pick $envValues "image.tag" | default .Values.image.tag -}}
+{{- printf "%s/%s/%s:%s" .Values.global.registry .Values.global.repositoryUser $imageRepositoryName $imageTag }}
 {{- end -}}
 
 {{/*
 Define the default service name.
 */}}
-{{- define "<service_name>.serviceName" -}}
-{{- $envValues := pluck .Values.global.env .Values | first | default .Values. }}
-{{- .Values.service.name | default $envValues.image.repositoryName }}
+{{- define "tpsvc-config.serviceName" -}}
+{{- $envValues := pluck .Values.global.env .Values | first }}
+{{- $serviceName := pick $envValues "service.name" | default .Values.service.name -}}
+{{- $imageRepositoryName := pick $envValues "image.repositoryName" | default .Values.image.repositoryName -}}
+{{- $serviceName | default $imageRepositoryName }}
 {{- end -}}
