@@ -43,7 +43,7 @@ heritage: {{ .Release.Service }}
 {{/*
 Define the docker image.
 */}}
-{{- define "tpsvc-config.image" -}}
+{{- define "<service_name>.image" -}}
 {{- $envValues := pluck .Values.global.env .Values | first }}
 {{- $imageRepositoryName := pick $envValues "image.repositoryName" | default .Values.image.repositoryName -}}
 {{- $imageTag := pick $envValues "image.tag" | default .Values.image.tag -}}
@@ -53,7 +53,7 @@ Define the docker image.
 {{/*
 Define the default service name.
 */}}
-{{- define "tpsvc-config.serviceName" -}}
+{{- define "<service_name>.serviceName" -}}
 {{- $envValues := pluck .Values.global.env .Values | first }}
 {{- $serviceName := pick $envValues "service.name" | default .Values.service.name -}}
 {{- $imageRepositoryName := pick $envValues "image.repositoryName" | default .Values.image.repositoryName -}}
