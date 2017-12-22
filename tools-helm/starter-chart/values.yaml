@@ -12,10 +12,10 @@ global:
   registry: "registry.datapwn.com"
   ## repositoryUser defines the GitHub user name. Default value is "talend".
   repositoryUser: "talend"
-  ## registryKey is a k8s secret for Docker images. Default value is "talendregistry"
+  ## registryKey is a k8s secret for Docker images. Default value is "talend-docker-registry"
   ## the secret needs to be created manually
   ## kubectl create secret docker-registry talend-docker-registry --docker-server=registry.datapwn.com --docker-username=<you user name> --docker-password="<your password>" --docker-email=<your email>
-  registryKey: talendregistry
+  registryKey: talend-docker-registry
   
   ## infraReleaseName is the Helm release name for Infrastructure charts (i.e. MongoDB, PostgreSQL, etc...)
   ## only set this value if the Infrastructure chart is not in the same release with the current chart
