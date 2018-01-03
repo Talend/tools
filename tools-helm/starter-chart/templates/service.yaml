@@ -6,11 +6,11 @@ metadata:
   labels:
 {{ include "<service_name>.labels" . | indent 4 }}
 spec:
-  type: {{ $envValues.service.type }}
+  type: {{ default .Value.service.type $envValues.service.type }}
   ports:
-    - name: {{ template "<service_name>.serviceName" . }}
+    - name: {{ template "<service_name>.servicePortName" . }}
       port: {{ $envValues.service.defaultPort }}
-      targetPort: {{ template "<service_name>.serviceName" . }}
+      targetPort: {{ template "<service_name>.servicePortName" . }}
   selector:
     app: {{ template "<service_name>.name" . }}
     release: {{ .Release.Name }}

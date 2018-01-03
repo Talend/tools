@@ -45,8 +45,8 @@ Define the docker image.
 */}}
 {{- define "<service_name>.image" -}}
 {{- $envValues := pluck .Values.global.env .Values | first }}
-{{- $imageRepositoryName := pick $envValues "image.repositoryName" | default .Values.image.repositoryName -}}
-{{- $imageTag := pick $envValues "image.tag" | default .Values.image.tag -}}
+{{- $imageRepositoryName := default .Values.image.repositoryName $envValues.image.repositoryName -}}
+{{- $imageTag := default .Values.image.tag $envValues.image.tag -}}
 {{- printf "%s/%s/%s:%s" .Values.global.registry .Values.global.repositoryUser $imageRepositoryName $imageTag }}
 {{- end -}}
 
@@ -55,7 +55,15 @@ Define the default service name.
 */}}
 {{- define "<service_name>.serviceName" -}}
 {{- $envValues := pluck .Values.global.env .Values | first }}
-{{- $serviceName := pick $envValues "service.name" | default .Values.service.name -}}
-{{- $imageRepositoryName := pick $envValues "image.repositoryName" | default .Values.image.repositoryName -}}
+{{- $serviceName := default .Values.service.name $envValues.service.name-}}
+{{- $imageRepositoryName := default .Values.image.repositoryName $envValues.image.repositoryName -}}
 {{- $serviceName | default $imageRepositoryName }}
+{{- end -}}
+
+{{/*
+Define the default service service port.(must be shorter than 15 chars)
+*/}}
+{{- define "<service_name>.servicePortName" -}}
+{{- $envValues := pluck .Values.global.env .Values | first }}
+{{- default .Chart.Name .Values.nameOverride | trunc 10 | printf "%sport" -}}
 {{- end -}}

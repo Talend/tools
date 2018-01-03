@@ -6,7 +6,7 @@ metadata:
   labels:
 {{ include "<service_name>.labels" . | indent 4 }}
 spec:
-  replicas: {{ int $envValues.replicaCount }}
+  replicas: {{ default .Values.replicaCount $envValues.replicaCount | int }}
   template:
     metadata:
       labels:
@@ -18,23 +18,23 @@ spec:
       containers:
         - name: {{ .Chart.Name }}
           image: {{ template "<service_name>.image" . }}
-          imagePullPolicy: {{ $envValues.image.pullPolicy }}
+          imagePullPolicy: {{ default .Values.image.pullPolicy $envValues.image.pullPolicy }}
           ports:
-            - name: {{ template "<service_name>.serviceName" . }}
-              containerPort: {{ $envValues.service.defaultPort }}
+            - name: {{ template "tcomp-oss-all.servicePortName" . }}
+              containerPort: {{ default .Values.service.defaultPort $envValues.service.defaultPort }}
           envFrom:
             - configMapRef:
                 name: {{ template "<service_name>.fullname" . }}
           livenessProbe:
             httpGet:
               path: /health
-              port: {{ $envValues.service.defaultPort }}
+              port: {{ template "tcomp-oss-all.servicePortName" . }}
             initialDelaySeconds: 5
             timeoutSeconds: 5
           readinessProbe:
             httpGet:
               path: /health
-              port: {{ $envValues.service.defaultPort }}
+              port: {{ template "tcomp-oss-all.servicePortName" . }}
             initialDelaySeconds: 5
             timeoutSeconds: 5
           {{- if $envValues.resources }}
