@@ -4,11 +4,11 @@ description: A Helm chart for the <service_name> in Kubernetes
 version: @service.version@
 keywords:
   - Talend
-  - <more keywords>
+  - <service_name>
 home: https://www.talend.com/products/platform/
 sources:
   - https://github.com/Talend/<service_name>
-maintaniers:
+maintainers:
   - name: Talend
     email: support@talend.com
 appVersion: @service.version@

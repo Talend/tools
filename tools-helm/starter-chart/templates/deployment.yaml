@@ -13,28 +13,30 @@ spec:
         app: {{ template "<service_name>.name" . }}
         release: {{ .Release.Name }}
     spec:
+      {{- if ne .Values.global.registry "" -}}
       imagePullSecrets:
-        - name: {{ template "<service_name>.registryKey" . }}
+        - name: {{ template "dataset-gateway.registryKey" . }}
+      {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           image: {{ template "<service_name>.image" . }}
-          imagePullPolicy: {{ default .Values.image.pullPolicy $envValues.image.pullPolicy }}
+          imagePullPolicy: {{ default .Values.image $envValues.image | pluck "pullPolicy" | first | default .Values.image.pullPolicy }}
           ports:
-            - name: {{ template "tcomp-oss-all.servicePortName" . }}
-              containerPort: {{ default .Values.service.defaultPort $envValues.service.defaultPort }}
+            - name: {{ template "<service_name>.servicePortName" . }}
+              containerPort: {{ default .Values.service $envValues.service | pluck "defaultPort" | first | default .Values.service.defaultPort }}
           envFrom:
             - configMapRef:
                 name: {{ template "<service_name>.fullname" . }}
           livenessProbe:
             httpGet:
               path: /health
-              port: {{ template "tcomp-oss-all.servicePortName" . }}
+              port: {{ template "<service_name>.servicePortName" . }}
             initialDelaySeconds: 5
             timeoutSeconds: 5
           readinessProbe:
             httpGet:
               path: /health
-              port: {{ template "tcomp-oss-all.servicePortName" . }}
+              port: {{ template "<service_name>.servicePortName" . }}
             initialDelaySeconds: 5
             timeoutSeconds: 5
           {{- if $envValues.resources }}

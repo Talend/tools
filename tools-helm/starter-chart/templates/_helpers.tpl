@@ -1,6 +1,7 @@
 {{/* vim: set filetype=mustache: */}}
 {{/*
 Expand the name of the chart.
+Truncate at 63 chars characters due to limitations of the DNS system.
 */}}
 {{- define "<service_name>.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" -}}
@@ -8,7 +9,6 @@ Expand the name of the chart.
 
 {{/*
 Create a default fully qualified app name.
-Truncate at 63 chars characters due to limitations of the DNS system.
 */}}
 {{- define "<service_name>.fullname" -}}
 {{- $name := (include "<service_name>.name" .) -}}
@@ -47,17 +47,11 @@ Define the docker image.
 {{- $envValues := pluck .Values.global.env .Values | first }}
 {{- $imageRepositoryName := default .Values.image.repositoryName $envValues.image.repositoryName -}}
 {{- $imageTag := default .Values.image.tag $envValues.image.tag -}}
-{{- printf "%s/%s/%s:%s" .Values.global.registry .Values.global.repositoryUser $imageRepositoryName $imageTag }}
+{{- if eq .Values.global.registry "" -}}
+    {{- printf "%s/%s:%s" .Values.global.repositoryUser $imageRepositoryName $imageTag -}}
+{{else}}
+    {{- printf "%s/%s/%s:%s" .Values.global.registry .Values.global.repositoryUser $imageRepositoryName $imageTag -}}
 {{- end -}}
-
-{{/*
-Define the default service name.
-*/}}
-{{- define "<service_name>.serviceName" -}}
-{{- $envValues := pluck .Values.global.env .Values | first }}
-{{- $serviceName := default .Values.service.name $envValues.service.name-}}
-{{- $imageRepositoryName := default .Values.image.repositoryName $envValues.image.repositoryName -}}
-{{- $serviceName | default $imageRepositoryName }}
 {{- end -}}
 
 {{/*

@@ -4,4 +4,4 @@ kind: ConfigMap
 metadata:
   name: {{ template "<service_name>.fullname" . }}
 data:
-  #<ENV_VAR_NAME>: {{ $envValues.<label_name> | quote }}
+  JAVA_OPTS: {{ default .Values.javaOpts $envValues.javaOpts | quote }}
