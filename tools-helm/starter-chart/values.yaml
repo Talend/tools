@@ -53,12 +53,12 @@ service:
   ## put more documentation in here about why we have only one port 
   defaultPort: 7780
 
-## ------------------------------------------------------------------------------------------------------ ##
-## defines values for the production environment
-
 #define the jre options to used when lanching the service.
 javaOpts: "-Xmx256M"
 
+
+## ------------------------------------------------------------------------------------------------------ ##
+## defines values for the production environment
 
 prod:
 

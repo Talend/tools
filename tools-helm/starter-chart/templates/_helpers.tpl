@@ -27,7 +27,7 @@ Create a default chart name including the version number
 Define the docker registry key.
 */}}
 {{- define "<service_name>.registryKey" -}}
-{{- .Values.global.registryKey | default "talendregistry" }}
+{{- .Values.global.registryKey | default "talendregistry" -}}
 {{- end -}}
 
 {{/*
@@ -55,9 +55,9 @@ Define the docker image.
 {{- end -}}
 
 {{/*
-Define the default service service port.(must be shorter than 15 chars)
+Define the default service port.(must be shorter than 15 chars and must contain only lowercase letters)
 */}}
 {{- define "<service_name>.servicePortName" -}}
-{{- $envValues := pluck .Values.global.env .Values | first }}
-{{- default .Chart.Name .Values.nameOverride | trunc 10 | printf "%sport" -}}
+{{- $name := (include "tpsvc-config.name" .) -}}
+{{- default .Chart.Name $name | trunc 10 | printf "%sport" -}}
 {{- end -}}

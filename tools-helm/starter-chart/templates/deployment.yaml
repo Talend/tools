@@ -13,9 +13,9 @@ spec:
         app: {{ template "<service_name>.name" . }}
         release: {{ .Release.Name }}
     spec:
-      {{- if ne .Values.global.registry "" -}}
+      {{- if ne .Values.global.registry "" }}
       imagePullSecrets:
-        - name: {{ template "dataset-gateway.registryKey" . }}
+        - name: {{ template "<service_name>.registryKey" . }}
       {{- end }}
       containers:
         - name: {{ .Chart.Name }}
