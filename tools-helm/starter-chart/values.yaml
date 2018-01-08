@@ -8,10 +8,6 @@
 global:
   ## env defines the deployment environment: prod, qa, dev
   env: prod
-  ## registry defines the docker registry
-  registry: "registry.datapwn.com"
-  ## repositoryUser defines the GitHub user name. Default value is "talend".
-  repositoryUser: "talend"
   ## registryKey is a k8s secret for Docker images. Default value is "talend-docker-registry"
   ## the secret needs to be created manually
   ## kubectl create secret docker-registry talend-docker-registry --docker-server=registry.datapwn.com --docker-username=<you user name> --docker-password="<your password>" --docker-email=<your email>
@@ -32,6 +28,10 @@ global:
 replicaCount: 1
 
 image:
+  ## The docker image registry
+  registry: "registry.datapwn.com"
+  ## the dcoker image path in the registry
+  path: "talend/<service_name>:latest"
   ## repositoryName represents the GitHub repository name
   repositoryName: "<service_name>"
   ## tag defines the version/tag of the docker image

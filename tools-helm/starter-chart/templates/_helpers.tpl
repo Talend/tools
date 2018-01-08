@@ -41,23 +41,32 @@ heritage: {{ .Release.Service }}
 {{- end -}}
 
 {{/*
-Define the docker image.
-*/}}
-{{- define "<service_name>.image" -}}
-{{- $envValues := pluck .Values.global.env .Values | first }}
-{{- $imageRepositoryName := default .Values.image.repositoryName $envValues.image.repositoryName -}}
-{{- $imageTag := default .Values.image.tag $envValues.image.tag -}}
-{{- if eq .Values.global.registry "" -}}
-    {{- printf "%s/%s:%s" .Values.global.repositoryUser $imageRepositoryName $imageTag -}}
-{{else}}
-    {{- printf "%s/%s/%s:%s" .Values.global.registry .Values.global.repositoryUser $imageRepositoryName $imageTag -}}
-{{- end -}}
-{{- end -}}
-
-{{/*
 Define the default service port.(must be shorter than 15 chars and must contain only lowercase letters)
 */}}
 {{- define "<service_name>.servicePortName" -}}
 {{- $name := (include "tpsvc-config.name" .) -}}
 {{- default .Chart.Name $name | trunc 10 | printf "%sport" -}}
 {{- end -}}
+
+{{/*
+Define the docker image.
+*/}}
+{{- define "<service_name>.image" -}}
+{{- $envValues := pluck .Values.global.env .Values | first }}
+{{- $imageRegistry := include "<service_name>.imageRegistry" . -}}
+{{- $imagePath := default .Values.image $envValues.image | pluck "path" | first | default .Values.image.path -}}
+{{- if eq (default "" $imageRegistry) "" -}}
+    {{- $imagePath -}}
+{{else}}
+    {{- printf "%s/%s" $imageRegistry $imagePath -}}
+{{- end -}}
+{{- end -}}
+
+{{/*
+Define the docker registry value
+*/}}
+{{- define "<service_name>.imageRegistry" -}}
+{{- $envValues := pluck .Values.global.env .Values | first }}
+{{- default .Values.image $envValues.image | pluck "registry" | first | default .Values.image.registry -}}
+{{- end -}}
+

@@ -13,7 +13,7 @@ spec:
         app: {{ template "<service_name>.name" . }}
         release: {{ .Release.Name }}
     spec:
-      {{- if ne .Values.global.registry "" }}
+      {{- if ne (default "" (include "<service_name>.imageRegistry" .)) "" }}
       imagePullSecrets:
         - name: {{ template "<service_name>.registryKey" . }}
       {{- end }}
