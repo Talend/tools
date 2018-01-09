@@ -31,11 +31,7 @@ image:
   ## The docker image registry
   registry: "registry.datapwn.com"
   ## the dcoker image path in the registry
-  path: "talend/<service_name>:latest"
-  ## repositoryName represents the GitHub repository name
-  repositoryName: "<service_name>"
-  ## tag defines the version/tag of the docker image
-  tag: "@service.version@"
+  path: "talend/<service_name>:@service.version@"
   ## pullPolicy defines the pull policy for docker images: IfNotPresent and Always
   ## default value is IfNotPresent
   pullPolicy: "IfNotPresent"
