@@ -41,10 +41,9 @@ Parameter                      | Description	                                   
 -------------------------------|--------------------------------------------------|--------------------------------
 `registryKey`                  | k8s secret for the docker registry               | talendregistry
 `replicaCount`                 | Number of containers running in parallel         | 1
-`global.registry`              | Docker registry                                  | registry.datapwn.com
 `global.repositoryUser`        | GitHub user name                                 | talend
-`image.repositoryName`         | GitHub repo name                                 | 
-`image.tag`                    | Image tag/version                                | 
+`image.registry`               | Docker registry, can be emty                     | registry.datapwn.com
+`image.path`                   | Image path ex: arm64v8/busybox:1.28              | 
 `image.pullPolicy`             | Image pull policy	                              | IfNotPresent
 `service.name`                 | k8s service name                                 | 
 
