@@ -39,13 +39,16 @@ These values can be configured independently for different releases (i.e. prod, 
 
 Parameter                      | Description	                                    | Default
 -------------------------------|--------------------------------------------------|--------------------------------
-`registryKey`                  | k8s secret for the docker registry               | talendregistry
+`global.env`                   | Deployment environment                           | prod
+`global.registryKey`           | k8s secret for the docker registry               | talendregistry
 `replicaCount`                 | Number of containers running in parallel         | 1
-`global.repositoryUser`        | GitHub user name                                 | talend
-`image.registry`               | Docker registry, can be emty                     | registry.datapwn.com
-`image.path`                   | Image path ex: arm64v8/busybox:1.28              | 
+`image.registry`               | Docker registry (it can be empty)                | registry.datapwn.com
+`image.path`                   | Docker image path (i.e. arm64v8/busybox:1.28)    | talend/<service_name>:<tag>
 `image.pullPolicy`             | Image pull policy	                              | IfNotPresent
-`service.name`                 | k8s service name                                 | 
+`service.type`                 | k8s service type                                 | ClusterIP
+`service.defaultPort`          | k8s service port                                 | 
+`javaOpts`                     | JRE options                                      | -Xmx256M
+
 
 You can override these values at runtime using the `--set key=value[,key=value]` argument to `helm install`. For example,
 

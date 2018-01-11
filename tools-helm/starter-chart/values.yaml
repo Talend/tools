@@ -31,22 +31,18 @@ image:
   ## The docker image registry
   registry: "registry.datapwn.com"
   ## the dcoker image path in the registry
-  path: "talend/<service_name>:@service.version@"
+  path: "talend/<service_name>:999.999.999"
   ## pullPolicy defines the pull policy for docker images: IfNotPresent and Always
   ## default value is IfNotPresent
   pullPolicy: "IfNotPresent"
 
 service:
-  ## name is the name of the service. By default it is set to the same value as the image.repositoryName
-  # name: "<service_name>"
   ## type is the Kubernetes service type: ClusterIP, NodePort, LoadBalancer, ExternalName
   ## default value is ClusterIP
   type: "ClusterIP"
   ## defaultPort is used for both services and pods/containers 
   ## it can be the same for all services because each service receives its own ip address in a cluster
   ## all docker images should also always use the same port which will be mapped to the defaultPort
-  ## A k8s service req
-  ## put more documentation in here about why we have only one port 
   defaultPort: 7780
 
 #define the jre options to used when lanching the service.

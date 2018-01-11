@@ -44,8 +44,7 @@ heritage: {{ .Release.Service }}
 Define the default service port.(must be shorter than 15 chars and must contain only lowercase letters)
 */}}
 {{- define "<service_name>.servicePortName" -}}
-{{- $name := (include "tpsvc-config.name" .) -}}
-{{- default .Chart.Name $name | trunc 10 | printf "%sport" -}}
+{{- "service-port" -}}
 {{- end -}}
 
 {{/*
