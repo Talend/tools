@@ -1,7 +1,6 @@
-{{- $envValues := pluck .Values.global.env .Values | first | default .Values }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: {{ template "<service_name>.fullname" . }}
 data:
-  JAVA_OPTS: {{ default .Values.javaOpts $envValues.javaOpts | quote }}
+  JAVA_OPTS: {{ .Values.javaOpts | quote }}

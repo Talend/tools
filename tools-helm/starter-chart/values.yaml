@@ -6,8 +6,6 @@
 ## defines global values
 
 global:
-  ## env defines the deployment environment: prod, qa, dev
-  env: prod
   ## registryKey is a k8s secret for Docker images. Default value is "talend-docker-registry"
   ## the secret needs to be created manually
   ## kubectl create secret docker-registry talend-docker-registry --docker-server=registry.datapwn.com --docker-username=<you user name> --docker-password="<your password>" --docker-email=<your email>
@@ -47,21 +45,3 @@ service:
 
 #define the jre options to used when lanching the service.
 javaOpts: "-Xmx256M"
-
-
-## ------------------------------------------------------------------------------------------------------ ##
-## defines values for the production environment
-
-prod:
-
-
-## ------------------------------------------------------------------------------------------------------ ##
-## defines values for the production environment
-
-dev:
-
-  image:
-    ## pullPolicy defines the pull policy for docker images: IfNotPresent and Always
-    pullPolicy: "Always"
-
-## ------------------------------------------------------------------------------------------------------ ##

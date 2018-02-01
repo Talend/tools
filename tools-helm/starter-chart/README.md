@@ -32,14 +32,13 @@ This command removes all the Kubernetes components associated with the chart and
 
 ### Configuration
 
-The chart uses two global values which need to be set before installing this chart: ```global.env``` and ```global.infraReleaseName```.
+The chart uses one global values which needs to be set before installing this chart: ```global.infraReleaseName```.
 
 The following tables lists the configurable parameters of the Platform Configuration Service chart and their default values. 
 These values can be configured independently for different releases (i.e. prod, qa, dev, etc...)
 
 Parameter                      | Description	                                    | Default
 -------------------------------|--------------------------------------------------|--------------------------------
-`global.env`                   | Deployment environment                           | prod
 `global.registryKey`           | k8s secret for the docker registry               | talendregistry
 `replicaCount`                 | Number of containers running in parallel         | 1
 `image.registry`               | Docker registry (it can be empty)                | registry.datapwn.com

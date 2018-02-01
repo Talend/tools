@@ -41,36 +41,12 @@ heritage: {{ .Release.Service }}
 {{- end -}}
 
 {{/*
-Define the default service port.(must be shorter than 15 chars and must contain only lowercase letters)
-*/}}
-{{- define "<service_name>.servicePortName" -}}
-{{- "service-port" -}}
-{{- end -}}
-
-{{/*
-Define the docker registry value
-*/}}
-{{- define "<service_name>.imageRegistry" -}}
-{{- $envValues := pluck .Values.global.env .Values | first }}
-{{- $imageRegistry := default .Values.image $envValues.image | pluck "registry" | first | default .Values.image.registry -}}
-{{- if empty $imageRegistry -}}
-    {{- "" -}}
-{{else}}
-   {{- $imageRegistry -}}
-{{- end -}}
-{{- end -}}
-
-{{/*
 Define the docker image.
 */}}
 {{- define "<service_name>.image" -}}
-{{- $envValues := pluck .Values.global.env .Values | first }}
-{{- $imageRegistry := include "<service_name>.imageRegistry" . -}}
-{{- $imagePath := default .Values.image $envValues.image | pluck "path" | first | default .Values.image.path -}}
-{{- if eq $imageRegistry "" -}}
-    {{- $imagePath -}}
+{{- if eq (default "" .Values.image.registry) "" -}}
+    {{- .Values.image.path -}}
 {{else}}
-    {{- printf "%s/%s" $imageRegistry $imagePath -}}
+    {{- printf "%s/%s" .Values.image.registry .Values.image.path -}}
 {{- end -}}
 {{- end -}}
-

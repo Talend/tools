@@ -1,4 +1,3 @@
-{{- $envValues := pluck .Values.global.env .Values | first | default .Values }}
 apiVersion: v1
 kind: Service
 metadata:
@@ -6,11 +5,11 @@ metadata:
   labels:
 {{ include "<service_name>.labels" . | indent 4 }}
 spec:
-  type: {{ default .Values.service $envValues.service | pluck "type" | first | default .Values.service.type }}
+  type: {{ .Values.service.type }}
   ports:
-    - name: {{ template "<service_name>.servicePortName" . }}
-      port: {{ default .Values.service $envValues.service | pluck "defaultPort" | first | default .Values.service.defaultPort }}
-      targetPort: {{ template "<service_name>.servicePortName" . }}
+    - name: service-port
+      port: {{ .Values.service.defaultPort }}
+      targetPort: service-port
   selector:
     app: {{ template "<service_name>.name" . }}
     release: {{ .Release.Name }}
