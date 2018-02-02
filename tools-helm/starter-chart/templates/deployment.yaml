@@ -17,7 +17,7 @@ spec:
         - name: {{ template "<service_name>.registryKey" . }}
       {{- end }}      
       containers:
-        - name: {{ .Chart.Name }}
+        - name: {{ template "<service_name>.fullname" . }}
           image: {{ template "<service_name>.image" . }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
