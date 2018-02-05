@@ -50,3 +50,13 @@ Define the docker image.
     {{- printf "%s/%s" .Values.image.registry .Values.image.path -}}
 {{- end -}}
 {{- end -}}
+
+
+{{/*
+Create a default fully qualified service name.
+Truncate at 63 chars characters due to limitations of the DNS system.
+*/}}
+{{- define "<service_name>.service.name" -}}
+{{- $name := .Values.service.name| trunc 63 | trimSuffix "-" -}}
+{{- printf "%s-%s" .Release.Name $name -}}
+{{- end -}}

@@ -1,7 +1,7 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: {{ template "<service_name>.fullname" . }}
+  name: {{ include "<service_name>.fullname" . }}
   labels:
 {{ include "<service_name>.labels" . | indent 4 }}
 spec:
@@ -9,23 +9,23 @@ spec:
   template:
     metadata:
       labels:
-        app: {{ template "<service_name>.name" . }}
+        app: {{ include "<service_name>.name" . }}
         release: {{ .Release.Name }}
     spec:
       {{- if ne (default "" .Values.image.registry ) "" }}
       imagePullSecrets:
-        - name: {{ template "<service_name>.registryKey" . }}
+        - name: {{ include "<service_name>.registryKey" . }}
       {{- end }}      
       containers:
-        - name: {{ template "<service_name>.fullname" . }}
-          image: {{ template "<service_name>.image" . }}
+        - name: {{ include "<service_name>.fullname" . }}
+          image: {{ include "<service_name>.image" . }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: service-port
               containerPort: {{ .Values.service.defaultPort }}
           envFrom:
             - configMapRef:
-                name: {{ template "<service_name>.fullname" . }}
+                name: {{ include "<service_name>.fullname" . }}
           livenessProbe:
             httpGet:
               path: /health

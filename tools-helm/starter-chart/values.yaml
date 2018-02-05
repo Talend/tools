@@ -35,6 +35,8 @@ image:
   pullPolicy: "IfNotPresent"
 
 service:
+  #name of the service
+  name: <service_name>
   ## type is the Kubernetes service type: ClusterIP, NodePort, LoadBalancer, ExternalName
   ## default value is ClusterIP
   type: "ClusterIP"

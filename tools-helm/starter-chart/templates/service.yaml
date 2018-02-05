@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ template "<service_name>.fullname" . }}
+  name: {{ include "<service_name>.service.name" . }}
   labels:
 {{ include "<service_name>.labels" . | indent 4 }}
 spec:
@@ -11,5 +11,5 @@ spec:
       port: {{ .Values.service.defaultPort }}
       targetPort: service-port
   selector:
-    app: {{ template "<service_name>.name" . }}
+    app: {{ include "<service_name>.name" . }}
     release: {{ .Release.Name }}
