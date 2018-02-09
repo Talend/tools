@@ -3,6 +3,10 @@
 ## Declare variables to be passed into your templates.
 
 ## ------------------------------------------------------------------------------------------------------ ##
+## enable/disable dependencies
+
+
+## ------------------------------------------------------------------------------------------------------ ##
 ## defines global values
 
 global:
@@ -17,7 +21,11 @@ global:
   
   ## platformReleaseName is the Helm release name for Platform charts (i.e. Config Service, Provisioning Service, etc...)
   ## only set this value if the Platform chart is not in the same release with the current chart
-  # platformReleaseName: infra
+  # platformReleaseName: platform
+
+  ## <appNameVariable> defines the version/tag of the docker image
+  ## this value is used if image.tag is empty or nil
+  #<appNameVariable>: "latest"
 
 ## ------------------------------------------------------------------------------------------------------ ##
 ## defines custom values
@@ -29,7 +37,9 @@ image:
   ## The docker image registry
   registry: "registry.datapwn.com"
   ## the dcoker image path in the registry
-  path: "talend/<service_name>:999.999.999"
+  path: "talend/<service_name>"
+  ## tag defines the version/tag of the docker image  
+  #tag: "999.999.999"
   ## pullPolicy defines the pull policy for docker images: IfNotPresent and Always
   ## default value is IfNotPresent
   pullPolicy: "IfNotPresent"

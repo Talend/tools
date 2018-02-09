@@ -45,12 +45,11 @@ Define the docker image.
 */}}
 {{- define "<service_name>.image" -}}
 {{- if eq (default "" .Values.image.registry) "" -}}
-    {{- .Values.image.path -}}
+    {{- printf "%s:%s" .Values.image.path (default .Values.global.<appNameVariable> .Values.image.tag | default "latest" ) -}}
 {{else}}
-    {{- printf "%s/%s" .Values.image.registry .Values.image.path -}}
+    {{- printf "%s/%s:%s" .Values.image.registry .Values.image.path (default .Values.global.<appNameVariable> .Values.image.tag | default "latest" ) -}}
 {{- end -}}
 {{- end -}}
-
 
 {{/*
 Create a default fully qualified service name.
