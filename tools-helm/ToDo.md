@@ -46,7 +46,7 @@
 1. Snapshot versions in charts - do we need to do something here?
    - In general we don't use the version qualifier at all
 1. Chart versioning
-   - The version of the chart should be the same with the version of the app. This should be updated/synchronized at build time.
+   - The version of the chart will NOT be synchronized with the version of the app. The app version will be provided to the chart through 
 1. Reference value files from the requirement files
    - This is not possible with Helm
    - An external tool is required for dynamic dependencies
@@ -125,13 +125,13 @@ dependencies:
 - name: mongodb
   version: 3.4.9
   repository: https://talend-charts.storage.api.com
-  condition: global.mongodb.enabled
+  condition: global.infra.enabled
   tags:
     - mongodb
 ```
-Each dependency will have a condition pointing to a global value named ```global.<Chart.Name>.enabled```. Similarly, each dependency will have a tag named ```<Chart.Name>```. The condition allows component charts to be enabled/disabled as desired from any other chart which uses the Infrastructure Chart. The tag is only useful for the Infrastructure chart as this value can't be propagated to a higher level in a chart hierarchy.
+Each dependency of the Infrastructure chart will have a condition pointing to a global value named ```global.infra.enabled```. Similarly, each dependency will have a tag named ```<Chart.Name>```. The tags allows consumers of the Infrastructure to enable/disable a particular chart while the condition allows consumers of the Infrastructure chart to disable all chart at once. Same is valid  
 
-The Platform Chart follows the same pattern as the Infrastructure chart. There will be no hard dependency between the Platform chart and the Infrastructure chart. Platform subcharts which depend on Infrastructure subcharts will use reference them through either ```.Values.global.infraReleaseName-.Chart.Name``` (in case the infrastructure charts are deployed under a different release name than the Platform charts) or just ```.Release.Name-.Chart.Name```.
+The Platform Chart follows the same pattern as the Infrastructure chart. There will be no hard dependency between the Platform chart and the Infrastructure chart. Platform subcharts which depend on Infrastructure subcharts will reference them through either ```.Values.global.infraReleaseName-.Chart.Name``` (in case the infrastructure charts are deployed under a different release name than the Platform charts) or just ```.Release.Name-.Chart.Name```.
 
 For applications, there will be no parent chart but each application will have its own chart. The applications charts will not have hard dependencies on Infrastructure or Platform charts. In order to test an application, a stack chart need to be created which has hard dependencies on Infrastructure, Platform and Application charts. The following example shows the ```requirements.yaml``` file of a stack chart:
 ```
@@ -165,7 +165,6 @@ helm install <chart_folder> --name <release_name> --namespace <release_name> \
    --set global.env=[prod | env | dev],\
    .Values.global.infraReleaseName=<infrastructure_release_name>,\
    .Values.global.infraReleaseName=<infrastructure_release_name>   
-
 ```
 
 -------------------------------------------------------------------------------------------------------------------------------

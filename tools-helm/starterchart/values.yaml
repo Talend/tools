@@ -1,6 +1,6 @@
-## Default values for tpsvc-config.
-## This is a YAML-formatted file.
-## Declare variables to be passed into your templates.
+## Default values for <service_name>
+## This is a YAML-formatted file
+## Declare variables to be passed into your templates
 
 ## ------------------------------------------------------------------------------------------------------ ##
 ## enable/disable dependencies
@@ -55,5 +55,5 @@ service:
   ## all docker images should also always use the same port which will be mapped to the defaultPort
   defaultPort: 7780
 
-#define the jre options to used when lanching the service.
+#define the jre options to be used when lanching the service.
 javaOpts: "-Xmx256M"

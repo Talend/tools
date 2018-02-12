@@ -34,17 +34,18 @@ This command removes all the Kubernetes components associated with the chart and
 
 The chart uses one global values which needs to be set before installing this chart: ```global.infraReleaseName```.
 
-The following tables lists the configurable parameters of the Platform Configuration Service chart and their default values. 
-These values can be configured independently for different releases (i.e. prod, qa, dev, etc...)
+The following tables lists the configurable parameters of the <service_name> chart and their default values. 
 
 Parameter                      | Description	                                    | Default
 -------------------------------|--------------------------------------------------|--------------------------------
 `global.registryKey`           | k8s secret for the docker registry               | talendregistry
 `global.infraReleaseName`      | Helm release name for infrastructure             | infra
 `global.platfromReleaseName`   | Helm release name for platform                   | platform
+`global.<appNameVariable>`     | Docker image version number                      | 
 `replicaCount`                 | Number of containers running in parallel         | 1
 `image.registry`               | Docker registry (it can be empty)                | registry.datapwn.com
-`image.path`                   | Docker image path (i.e. arm64v8/busybox:1.28)    | talend/<service_name>:<tag>
+`image.path`                   | Docker image path (i.e. arm64v8/busybox)         | talend/<service_name>
+`image.tag`                    | Docker image version (i.e. 1.28)                 | 
 `image.pullPolicy`             | Image pull policy	                              | IfNotPresent
 `service.name`                 | k8s service name                                 | <chart_name>
 `service.type`                 | k8s service type                                 | ClusterIP
@@ -59,12 +60,12 @@ $ helm install --name <service_name> \
     <proj_root_folder>/deploy/kubernetes/<service_name>
 ```
 
-The above command deploys the <service_name> Service in the k8s cluster and sets the values of ...
+The above command deploys the <service_name> Service in the k8s cluster.
 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```bash
-$ helm install --name <release_name> -f <path>/values.yaml <proj_root_folder>/deploy/kubernetes/<service_name>
+$ helm install --name <release_name> -f <path>/values-standalone.yaml <proj_root_folder>/deploy/kubernetes/<service_name>
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
