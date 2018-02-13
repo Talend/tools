@@ -12,9 +12,8 @@ _Note: The starter chart is work in progress and will be enhanced with new Kuber
 
 1. Chart names shall not contain dashes (Note: Helm has a problem with values which contain dashes)
 1. Dependencies tags could contain dashes as long as their values are not used inside the templates
-1. Tag dependencies with the name of the parent chart
-1. For common charts (charts which are intended to be consumed by upper level charts), it is recommended to tag all dependencies with the name of the parent chart followed by ```-standalone```. This allows consumer charts to easily disable all the dependencies of the common charts. 
-1. When using aliases for dependencies it is not possible to import values from child charts into the parent chart. This is an [issue](https://github.com/kubernetes/helm/issues/3457) which might be solved in one of the next releases.
+1. Tag all dependencies with the name of the parent chart followed by ```-standalone```. This allows consumer charts to easily disable all the dependencies of the common charts. 
+1. When using an alias for a dependency (child chart), it is not possible to import values from the child chart into the parent chart. This is an [issue](https://github.com/kubernetes/helm/issues/3457) which might be solved in one of the next releases.
 Templates
 1. When working with templates always use the ```include``` function. Do NOT use the ```template``` function. 
 1. It is very important to note that template names are global. If you declare two templates with the same name, whichever one is loaded last will be the one used.

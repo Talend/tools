@@ -3,4 +3,4 @@ dependencies:
   version: <chart_version_number>
   repository: http://chart.datapwn.com
   tags:
-    - <service_name>
+    - <chart_name>-standalone

@@ -42,7 +42,7 @@ image:
   #tag: "999.999.999"
   ## pullPolicy defines the pull policy for docker images: IfNotPresent and Always
   ## default value is IfNotPresent
-  pullPolicy: "IfNotPresent"
+  pullPolicy: "Always"
 
 service:
   #name of the service
