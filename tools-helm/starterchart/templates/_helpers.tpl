@@ -27,7 +27,7 @@ Create a default chart name including the version number
 Define the docker registry key.
 */}}
 {{- define "<service_name>.registryKey" -}}
-{{- .Values.global.registryKey | default "talendregistry" -}}
+{{- .Values.global.registryKey | default "" -}}
 {{- end -}}
 
 {{/*

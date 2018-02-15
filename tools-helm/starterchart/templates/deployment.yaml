@@ -12,9 +12,10 @@ spec:
         app: {{ include "<service_name>.name" . }}
         release: {{ .Release.Name }}
     spec:
-      {{- if ne (default "" .Values.image.registry ) "" }}
+      {{- $registryKey := include "<service_name>.registryKey" . }}
+      {{- if ne $registryKey "" }}
       imagePullSecrets:
-        - name: {{ include "<service_name>.registryKey" . }}
+        - name: {{ $registryKey }}
       {{- end }}      
       containers:
         - name: {{ include "<service_name>.fullname" . }}
