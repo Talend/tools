@@ -45,9 +45,9 @@ Define the docker image.
 */}}
 {{- define "<service_name>.image" -}}
 {{- if eq (default "" .Values.image.registry) "" -}}
-    {{- printf "%s:%s" .Values.image.path (default .Values.global.<appNameVariable> .Values.image.tag | default "latest" ) -}}
+    {{- printf "%s:%s" .Values.image.path (default (required "global.<app_name>ImageTag must be defined" .Values.global.<app_name>ImageTag) .Values.image.tag | default "latest" ) -}}
 {{else}}
-    {{- printf "%s/%s:%s" .Values.image.registry .Values.image.path (default .Values.global.<appNameVariable> .Values.image.tag | default "latest" ) -}}
+    {{- printf "%s/%s:%s" .Values.image.registry .Values.image.path (default (required "global.<app_name>ImageTag must be defined" .Values.global.<app_name>ImageTag) .Values.image.tag | default "latest" ) -}}
 {{- end -}}
 {{- end -}}
 
@@ -56,6 +56,6 @@ Create a default fully qualified service name.
 Truncate at 63 chars characters due to limitations of the DNS system.
 */}}
 {{- define "<service_name>.service.name" -}}
-{{- $name := .Values.service.name| trunc 63 | trimSuffix "-" -}}
+{{- $name := .Values.global.<service_name>ServiceName | trunc 63 | trimSuffix "-" -}}
 {{- printf "%s-%s" .Release.Name $name -}}
 {{- end -}}

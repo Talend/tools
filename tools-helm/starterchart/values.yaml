@@ -23,9 +23,25 @@ global:
   ## only set this value if the Platform chart is not in the same release with the current chart
   # platformReleaseName: platform
 
-  ## <appNameVariable> defines the version/tag of the docker image
+  ## <app_name>ImageTag defines the version/tag of the docker image
   ## this value is used if image.tag is empty or nil
-  #<appNameVariable>: "latest"
+  ## if this value is not specified the "latest" tag is used
+  #<app_name>ImageTag: "latest"
+
+  ## <service_name>ServiceName defines the kubernetes service name
+  <service_name>ServiceName: <service_name>
+
+  ## <service_name>ServicePort defines the port the <service_name> service can be accessed on
+  ## by default the service will be accessible on the global port defined by httpServicePort
+  ## if specified, this value will overwrite global.httpServicePort
+  #<service_name>ServicePort: <service_port>
+  
+  ## <service_name>ServiceType defines the service type 
+  ## if this value is not specified the "ClusterIP" will be used
+  #<service_name>ServiceType: "ClusterIP"
+
+  ## httpServicePort is the port exposed by all Talend services
+  httpServicePort: 80
 
 ## ------------------------------------------------------------------------------------------------------ ##
 ## defines custom values
@@ -43,17 +59,8 @@ image:
   ## pullPolicy defines the pull policy for docker images: IfNotPresent and Always
   ## default value is IfNotPresent
   pullPolicy: "Always"
-
-service:
-  #name of the service
-  name: <service_name>
-  ## type is the Kubernetes service type: ClusterIP, NodePort, LoadBalancer, ExternalName
-  ## default value is ClusterIP
-  type: "ClusterIP"
-  ## defaultPort is used for both services and pods/containers 
-  ## it can be the same for all services because each service receives its own ip address in a cluster
-  ## all docker images should also always use the same port which will be mapped to the defaultPort
-  defaultPort: 7780
+  ## port exposed by the docker image
+  port: <container_port>
 
 #define the jre options to be used when lanching the service.
 javaOpts: "-Xmx256M"

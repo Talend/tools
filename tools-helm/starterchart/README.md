@@ -32,25 +32,24 @@ This command removes all the Kubernetes components associated with the chart and
 
 ### Configuration
 
-The chart uses one global values which needs to be set before installing this chart: ```global.infraReleaseName```.
-
 The following tables lists the configurable parameters of the <service_name> chart and their default values. 
 
-Parameter                      | Description	                                    | Default
--------------------------------|--------------------------------------------------|--------------------------------
-`global.registryKey`           | k8s secret for the docker registry               | talendregistry
-`global.infraReleaseName`      | Helm release name for infrastructure             | infra
-`global.platfromReleaseName`   | Helm release name for platform                   | platform
-`global.<appNameVariable>`     | Docker image version number                      | latest
-`replicaCount`                 | Number of containers running in parallel         | 1
-`image.registry`               | Docker registry (it can be empty)                | registry.datapwn.com
-`image.path`                   | Docker image path (i.e. arm64v8/busybox)         | talend/<service_name>
-`image.tag`                    | Docker image version (i.e. 1.28)                 | latest
-`image.pullPolicy`             | Image pull policy	                              | Always
-`service.name`                 | k8s service name                                 | <chart_name>
-`service.type`                 | k8s service type                                 | ClusterIP
-`service.defaultPort`          | k8s service port                                 | 
-`javaOpts`                     | JRE options                                      | -Xmx256M
+Parameter                          | Description	                                    | Default
+-----------------------------------|--------------------------------------------------|--------------------------------
+`global.registryKey`               | k8s secret for the docker registry               | talendregistry
+`global.infraReleaseName`          | Helm release name for infrastructure             | infra
+`global.platfromReleaseName`       | Helm release name for platform                   | platform
+`global.<service_name>ImageTag`    | Docker image tag/versionNumber                   | latest
+`global.<service_name>ServiceName` | k8s service name                                 | 
+`global.<service_name>ServicePort` | k8s service port                                 | global.httpServicePort
+`global.<service_name>ServiceType` | k8s service type                                 | ClusterIP
+`global.httpServicePort`           | Default k8s service port for all Talend charts   | 80
+`replicaCount`                     | Number of containers running in parallel         | 1
+`image.registry`                   | Docker registry (it can be empty)                | registry.datapwn.com
+`image.path`                       | Docker image path (i.e. arm64v8/busybox)         | talend/<service_name>
+`image.tag`                        | Docker image version (i.e. 1.28)                 | latest
+`image.pullPolicy`                 | Image pull policy	                              | Always
+`javaOpts`                         | JRE options                                      | -Xmx256M
 
 You can override these values at runtime using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
@@ -60,7 +59,7 @@ $ helm install --name <service_name> \
     <proj_root_folder>/deploy/kubernetes/<service_name>
 ```
 
-The above command deploys the <service_name> Service in the k8s cluster.
+The above command deploys the <service_name> service in the k8s cluster.
 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
