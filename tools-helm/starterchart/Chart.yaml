@@ -1,0 +1,14 @@
+apiVersion: v1
+name: <service_name>
+description: A Helm chart for the <service_name> in Kubernetes
+version: 999.999.999
+keywords:
+  - Talend
+  - <service_name>
+home: https://www.talend.com/products/platform/
+sources:
+  - https://github.com/Talend/<service_name>
+maintainers:
+  - name: Talend
+    email: support@talend.com
+appVersion: 999.999.999

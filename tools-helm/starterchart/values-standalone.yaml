@@ -1,0 +1,21 @@
+## Default values for <service_name>
+## This is a YAML-formatted file
+## Declare variables to be passed into your templates
+
+## ------------------------------------------------------------------------------------------------------ ##
+## enable/disable dependencies
+
+
+## ------------------------------------------------------------------------------------------------------ ##
+## defines global values
+
+## ------------------------------------------------------------------------------------------------------ ##
+## defines custom values
+
+service:
+  ## type is the Kubernetes service type: ClusterIP, NodePort, LoadBalancer, ExternalName
+  ## default value is ClusterIP
+  type: "NodePort"
+
+#define the jre options to used when lanching the service.
+javaOpts: "-Xmx256M"

@@ -1,0 +1,66 @@
+## Default values for <service_name>
+## This is a YAML-formatted file
+## Declare variables to be passed into your templates
+
+## ------------------------------------------------------------------------------------------------------ ##
+## enable/disable dependencies
+
+
+## ------------------------------------------------------------------------------------------------------ ##
+## defines global values
+
+global:
+  ## registryKey is a k8s secret for Docker images. Default value is "talend-docker-registry"
+  ## the secret needs to be created manually
+  ## kubectl create secret docker-registry talend-docker-registry --docker-server=registry.datapwn.com --docker-username=<you user name> --docker-password="<your password>" --docker-email=<your email>
+  registryKey: talend-docker-registry
+  
+  ## infraReleaseName is the Helm release name for Infrastructure charts (i.e. MongoDB, PostgreSQL, etc...)
+  ## only set this value if the Infrastructure chart is not in the same release with the current chart
+  # infraReleaseName: infra
+  
+  ## platformReleaseName is the Helm release name for Platform charts (i.e. Config Service, Provisioning Service, etc...)
+  ## only set this value if the Platform chart is not in the same release with the current chart
+  # platformReleaseName: platform
+
+  ## <app_name>ImageTag defines the version/tag of the docker image
+  ## this value is used if image.tag is empty or nil
+  ## if this value is not specified the "latest" tag is used
+  #<app_name>ImageTag: "latest"
+
+  ## <service_name>ServiceName defines the kubernetes service name
+  <service_name>ServiceName: <service_name>
+
+  ## <service_name>ServicePort defines the port the <service_name> service can be accessed on
+  ## by default the service will be accessible on the global port defined by httpServicePort
+  ## if specified, this value will overwrite global.httpServicePort
+  #<service_name>ServicePort: <service_port>
+  
+  ## <service_name>ServiceType defines the service type 
+  ## if this value is not specified the "ClusterIP" will be used
+  #<service_name>ServiceType: "ClusterIP"
+
+  ## httpServicePort is the port exposed by all Talend services
+  httpServicePort: 80
+
+## ------------------------------------------------------------------------------------------------------ ##
+## defines custom values
+
+## replicaCount defines the number of container replicas running in parallel
+replicaCount: 1
+
+image:
+  ## The docker image registry
+  registry: "registry.datapwn.com"
+  ## the dcoker image path in the registry
+  path: "talend/<service_name>"
+  ## tag defines the version/tag of the docker image  
+  #tag: "999.999.999"
+  ## pullPolicy defines the pull policy for docker images: IfNotPresent and Always
+  ## default value is IfNotPresent
+  pullPolicy: "Always"
+  ## port exposed by the docker image
+  port: <container_port>
+
+#define the jre options to be used when lanching the service.
+javaOpts: "-Xmx256M"

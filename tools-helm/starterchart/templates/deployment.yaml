@@ -1,0 +1,50 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: {{ include "<service_name>.fullname" . }}
+  labels:
+{{ include "<service_name>.labels" . | indent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount | int }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "<service_name>.name" . }}
+        release: {{ .Release.Name }}
+    spec:
+      {{- $registryKey := include "<service_name>.registryKey" . }}
+      {{- if ne $registryKey "" }}
+      imagePullSecrets:
+        - name: {{ $registryKey }}
+      {{- end }}      
+      containers:
+        - name: {{ include "<service_name>.fullname" . }}
+          image: {{ include "<service_name>.image" . }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: service-port
+              containerPort: {{ .Values.service.defaultPort }}
+          envFrom:
+            - configMapRef:
+                name: {{ include "<service_name>.fullname" . }}
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: service-port
+            initialDelaySeconds: 5
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: service-port
+            initialDelaySeconds: 5
+            timeoutSeconds: 5
+          {{- if .Values.resources }}
+          resources:
+{{ toYaml .Values.resources | indent 12 }}
+          {{- end }}
+      {{- if .Values.nodeAffinity }}
+      affinity:
+        nodeAffinity:
+{{ toYaml .Values.nodeAffinity | indent 10 }}
+      {{- end }}
