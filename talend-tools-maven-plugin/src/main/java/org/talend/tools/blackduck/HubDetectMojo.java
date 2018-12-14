@@ -288,9 +288,9 @@ public class HubDetectMojo extends BlackduckBase {
         }
         final Map<String, String> config = new HashMap<>();
         // https://blackducksoftware.atlassian.net/wiki/spaces/INTDOCS/pages/68878339/Hub+Detect+Properties
-        config.put("blackduck.hub.url", blackduckUrl);
-        config.put("blackduck.hub.username", server.getUsername());
-        config.put("blackduck.hub.password", server.getPassword());
+        config.put("blackduck.url", blackduckUrl);
+        config.put("blackduck.username", server.getUsername());
+        config.put("blackduck.password", server.getPassword());
         config.put("logging.level.com.blackducksoftware.integration", logLevel);
         config.put("detect.project.name", blackduckName);
         config.put("detect.source.path", rootPath);
