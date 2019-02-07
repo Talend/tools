@@ -16,7 +16,7 @@ That's it, you're good to go !
 * Click on the *Import* button and select the file  [src/main/resources/talend_java_eclipse_formatter.xml](src/main/resources/talend_java_eclipse_formatter.xml)
 * Select the Java -> Code Style -> Organize Imports.
 * Click on the *Import...* button and select the file  [src/main/resources/talend.importorder](src/main/resources/talend.importorder)
-* Setup .properties files encoding to ISO-8859-1 (Preferences -> General -> Content Type -> Java properties file -> default encoding) (see https://docs.oracle.com/javase/8/docs/api/java/util/PropertyResourceBundle.html for more details)
+* Setup .properties files encoding to ISO-8859-1 (Preferences -> General -> Content Type -> Text -> Java properties file -> default encoding) (see https://docs.oracle.com/javase/8/docs/api/java/util/PropertyResourceBundle.html for more details)
 
 ### Maven
 #### setup formatter validation
