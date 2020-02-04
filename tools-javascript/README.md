@@ -1,11 +1,16 @@
-# Shared JavaScript formatting configuration
+# Shared JavaScript configuration
 
 Here's where you'll find all the configuration files related to JavaScript
 formatting.
 
-All those formatting rules are shared across Talend's frontend teams.
-
 ## Install
+
+### @talend/scripts
+
+please be sure you use the @talend/scripts package to make it easier to follow the rules and update cross teams.
+
+https://github.com/Talend/ui/tree/master/packages/scripts
+
 
 ### WebStorm
 
