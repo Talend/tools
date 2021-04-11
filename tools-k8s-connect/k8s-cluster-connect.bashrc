@@ -1,4 +1,4 @@
-# To use this custo add the 3 following line in your bashrc file
+# To use this scriptlet add the 3 following line in your bashrc file
 # if [ -f ~/projects/tools/tools-k8s-connect/k8s-cluster-connect.bashrc]; then
 #    . ~/projects/tools/tools-k8s-connect/k8s-cluster-connect.bashrc
 # fi
