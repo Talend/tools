@@ -5,6 +5,14 @@
 #
 
 # Example of custom bashrc configuration
+
+alias kl='f(){
+    bash /home/$(whoami)/projects/tools/tools-k8s-connect/k8s-cluster-connect.sh $@
+    update_k8s_config
+    unset -f f;
+    };
+  f'
+
 update_k8s_config(){
     export KUBECONFIG=$(for i in $(find /home/$(whoami)/.kube -iname '*.config') ; do echo -n :$i; done | cut -c 2-)
 }
