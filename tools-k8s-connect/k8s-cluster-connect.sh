@@ -21,7 +21,7 @@ Usage: $(basename "${BASH_SOURCE[0]}") [-h] [-v] [-b] region
 
 Helper script to connect to Talend K8S clusters.
 
-region : value should be in dev, int, int-admin, qa-admin, ci-admin, at, at-admin, staging, staging-admin, us, eu, ap, us-admin, eu-admin, ap-admin, az-sandbox, az-sandbox-admin, az-staging, az-staging-admin,az-prodanz, az-prodanz-admin, az-produs, az-produs-admin
+region : value should be in dev, int, int-admin, qa-admin, ci-admin, at, at-admin, staging, staging-admin, us, eu, au, ap, us-admin, eu-admin, au-admin, ap-admin, az-sandbox, az-sandbox-admin, az-staging, az-staging-admin,az-prodanz, az-prodanz-admin, az-produs, az-produs-admin
 Available options:
 
 -h, --help      Print this help and exit
@@ -162,11 +162,11 @@ case $K8S_REGION in
             AWS_ACCOUNT=676807884358
             sed -i 's/role =.*/role = arn:aws:iam::676807884358:role\/AWSAccountAdmin/g' ~/.okta-aws
             ;;
-        us|eu|ap)
+        us|eu|ap|au)
             AWS_ACCOUNT=172292293482
             sed -i 's/role =.*/role = arn:aws:iam::172292293482:role\/AWSAccountAuditor/g' ~/.okta-aws
             ;;
-        us-admin|eu-admin|ap-admin)
+        us-admin|eu-admin|ap-admin|au-admin)
             AWS_ACCOUNT=172292293482
             sed -i 's/role =.*/role = arn:aws:iam::172292293482:role\/AWSAccountAdmin/g' ~/.okta-aws
             ;;
@@ -222,6 +222,10 @@ case $K8S_REGION in
         eu| eu-admin)
                 CLUSTER_NAME=eu_stable
                 AWS_REGION=eu-central-1
+                ;;
+        au| au-admin)
+                CLUSTER_NAME=au_stable
+                AWS_REGION=ap-southeast-2
                 ;;
         ap| ap-admin)
                 CLUSTER_NAME=apacpr_stable
