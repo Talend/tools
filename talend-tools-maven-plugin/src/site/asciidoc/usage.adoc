@@ -1,21 +1,3 @@
-= Hub Detect
+= Tools Maven Plugin
 
-== Minimal configuration
-
-The plugin needs at least the blackduck url to use for your project:
-
-[source,xml]
-----
-<plugin>
-  <groupId>org.talend.tools</groupId>
-  <artifactId>talend-tools-maven-plugin</artifactId>
-  <version>${plugin.version}</version>
-  <inherited>false</inherited>
-  <configuration>
-    <blackduckUrl>https://blackduck.talend.com</blackduckUrl>
-  </configuration>
-</plugin>
-----
-
-IMPORTANT: the `serverId` attribute allows you to configure which server of your `settings.xml`
-is used to authenticate against blackduck. By default it uses the server `blackduck`.
+TBD
