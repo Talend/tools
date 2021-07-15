@@ -1,19 +1,20 @@
-**What is the problem this Pull Request is trying to solve?**
+**What is the problem this PR is trying to solve?**
 
 **What is the chosen solution to this problem?**
 
-**Link to the JIRA issue**
-e.g. https://jira.talendforge.org/browse/XXX
+**Please check if the PR fulfills these requirements**
 
-**Please check if the Pull Request fulfills these requirements**
-- [ ] The PR commit message follows our [guidelines](https://github.com/talend/tools/blob/master/tools-root-github/CONTRIBUTING.md)
-- [ ] Tests for the changes have been added (for bug fixes / features)
-- [ ] Docs have been added / updated (for bug fixes / features)
-- [ ] Related design / discussions / pages (not in JIRA), if any, are all linked or available in the Pull Request
+* [ ] The PR commit message follows our [guidelines](https://github.com/talend/tools/blob/master/tools-root-github/CONTRIBUTING.md)
+* [ ] Tests for the changes have been added (for bug fixes / features)
+* [ ] Docs have been added / updated (for bug fixes / features)
+* [ ] Related design / discussions / pages (not in jira), if any, are all linked or available in the PR
 
 <!-- You can add more checkboxes here -->
 
-**[ ] This Pull Request introduces a breaking change**
+**[ ] This PR introduces a breaking change**
+
+<!-- if the PR introduces a breaking change, add the description here. So when you merge this PR, add this description into the [breaking change wiki](https://github.com/Talend/ui/wiki/BREAKING-CHANGE) in the next version -->
 
 <!-- **Original Template** -->
+
 <!-- https://github.com/Talend/tools/blob/master/tools-root-github/.github/PULL_REQUEST_TEMPLATE.md -->
